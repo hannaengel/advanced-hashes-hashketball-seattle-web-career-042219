@@ -186,11 +186,15 @@ def player_numbers (team_name)
   jerseyArray
 end
 def player_stats (player_name)
-  hash = {}
+  hash = Hash.new
   game_hash.each do |home_away, info|
     info.each do |category, information|
       if category == :players
-       hash = information[player_name]
+         information.collect do |names, stats|
+          if names == player_name
+            hash = stats
+          end
+        end
       end
     end
   end
