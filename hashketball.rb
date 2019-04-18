@@ -203,7 +203,7 @@ end
 
 def big_shoe_rebounds
   hash = {}
-  answer = []
+  answer = 0
   game_hash.each do |home_away, info|
     info.each do |category, information|
       if category == :players
@@ -220,7 +220,7 @@ def big_shoe_rebounds
       if category == :players
         information.collect do |names, stats|
           if names == player_name
-            answer<< stats[:rebounds]
+            answer = stats[:rebounds]
           end
         end
       end
