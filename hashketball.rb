@@ -162,9 +162,9 @@ end
 def team_names
   teamsArray = []
   game_hash.each do |home_away, info|
-    if info == :team_name
-      info.each do |team_name, name|
-        teamsArray<< name
+    info.each do |categories, information|
+      if categories == :team_name
+        teamsArray<< information
       end
     end
   end
