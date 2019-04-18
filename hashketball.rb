@@ -200,3 +200,29 @@ def player_stats (player_name)
   end
   hash
 end
+
+def big_shoe_rebounds
+  hash = {}
+  game_hash.each do |home_away, info|
+    info.each do |category, information|
+      if category == :players
+         information.collect do |names, stats|
+          hash[names] = stats[:shoe]
+        end
+      end
+    end
+  end
+  array = hash.max_by{|k,v| v}
+  player_name = array[0]
+  game_hash.each do |home_away, info|
+    info.each do |category, information|
+      if category == :players
+        information.collect do |names, stats|
+          if names == player_name
+            puts stats[:rebounds]
+          end
+        end
+      end
+    end
+  end
+end
